@@ -1,0 +1,9 @@
+﻿@using ExploreCalifornia.Models.Support
+@model RequestedTourInfoViewModel
+
+<div class="col3">
+    <p>
+        @Html.CheckBoxFor(x => x.IsSelected) @Model.Name
+        @Html.HiddenFor(x => x.Id)
+    </p>
+</div>

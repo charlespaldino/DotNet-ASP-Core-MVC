@@ -1,0 +1,22 @@
+﻿@inject ExploreCalifornia.Services.FormattingService formatter
+@model ExploreCalifornia.Models.Post
+
+
+<article class="blog-post">
+    <h1>
+        @Html.ActionLink(Model.Title, "Post", "Blog", new 
+            { year = Model.Posted.Year, month = Model.Posted.Month, key = Model.ID })
+    </h1>
+
+    <hr />
+    <div class="content">
+        @Model.Body
+    </div>
+    <hr />
+    <center>
+        <div class="details">
+            Posted <span>@formatter.formatDate(Model.Posted)</span> by <span>@(String.IsNullOrEmpty(Model.Author) ? "N/A" : @Model.Author)</span>
+        </div>
+    </center>
+
+</article>

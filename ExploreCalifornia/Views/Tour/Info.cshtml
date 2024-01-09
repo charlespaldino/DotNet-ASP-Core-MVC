@@ -1,0 +1,17 @@
+@using ExploreCalifornia.Models.Tours
+@inject ExploreCalifornia.Services.FormattingService formatter;
+@model TourDetail
+
+@section header 
+{
+    <h1>Tours</h1>
+}
+<article id="mainArticle">
+    <h1>@Model.TourInfo.ParentName</h1>
+    <h2>@Model.Name<span class="tourCost">@Model.DurationDays days | @Model.Price</span></h2>
+    <img src="@Model.TourInfo.SplashPosterURL" alt="@Model.Name" width="715" height="315" class="articleImage">
+    <div id="div_splash">
+        @Html.Raw(@formatter.formatHTML(@Model.TourInfo.SplashHTML))
+    </div>
+    <p><a href="/booking.htm" title="Book now!" class="book detail">Book Now!</a></p>
+</article>

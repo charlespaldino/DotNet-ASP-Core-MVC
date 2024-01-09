@@ -1,0 +1,56 @@
+﻿<nav id="siteNav">
+    <h1>Where do you want to go?</h1>
+    <ul>
+        <li>
+            <a href="@Url.Action("Index","Tour")" title="Our tours">Tours <br /><span class="tagline">follow our bliss</span></a>
+            <ul>
+                <li><a href="@Url.Action("Index","Tour")" title="Our tours">All Tours</a></li>
+                <li><a href="@Url.Action("Index","Tour")" title="find tours">Tours by Activity</a></li>
+                <li><a href="@Url.Action("Index","Tour")" title="find tours">Tours by Region</a></li>
+                <li><a href="@Url.Action("Index","Tour")" title="find tours">Tour Finder</a></li>
+            </ul>
+        </li>
+        <li><a href="@Url.Action("Mission","Home")" title="What we believe">Mission <br /><span class="tagline">what makes us different?</span></a></li>
+        <li>
+            <a href="@Url.Action("Resources","Home")" title="planning resources">Resources <br /><span class="tagline">plan your trip</span></a>
+            <ul>
+                <li><a href="resources/faq.htm" title="Got questions?">Tour FAQs</a></li>
+                <li><a href="resources/additional_resources.htm" title="additional resources">Tour Information</a></li>
+                <li><a href="resources/terms.htm" title="terms and conditions">Site Terms</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Explorer")" title="Our community">Explorers <br /><span class="tagline">join our community</span></a>
+            <ul>
+                <li><a href="explorers/join.htm" title="join our community">Join the Explorers</a></li>
+                <li><a href="@Url.Action("Index","Blog")" title="Read Our Blog">Read Our Blog!</a></li>
+                <li><a href="explorers/gallery.htm" title="contributor photos">Tour Photos</a></li>
+                <li><a href="_video/EC_podcast_full version.mov" title="check out our podcast">Video podcast</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="@Url.Action("ContactUs","Support")" title="Contact and support">Contact us<br /><span class="tagline">we're here to help!</span></a>
+            <ul>
+                <li><a href="@Url.Action("ContactUs","Support")" title="Contact and support">Contact us</a></li>
+                <li><a href="@Url.Action("Index","Support")" title="need help?">Support</a></li>
+            </ul>
+        </li>
+        <li><a href="@Url.Action("About","Home")" title="About this project">About<br /><span class="tagline">about this project</span></a></li>
+        <li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form id="logout" action="@Url.Action("Logout", "Account")" method="post">
+                    <center>
+                        <span class="tagline">@User.Identity.Name</span>
+                    </center>
+                    <br />
+                    <a href="javascript: $('#logout').submit()" class="last">Logout</a>
+                </form>
+            }
+            else
+            {
+                <a href="@Url.Action("Login", "Account")" title="Log In" class="last">Login</a>
+            }
+        </li>
+    </ul>
+</nav>

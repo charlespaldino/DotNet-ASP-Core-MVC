@@ -1,0 +1,31 @@
+{
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "ExploreCalifornia": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EnableDeveloperExceptions": "true",
+        "DefaultConnection": "Data Source=DESKTOP-DJUCDQU\\SQLEXPRESS;Initial Catalog=ExploreCalifornia;Integrated Security=True;Pooling=False;Encrypt=False;",
+        "IdentityConnection": "Data Source=DESKTOP-DJUCDQU\\SQLEXPRESS;Initial Catalog=ExploreCalifornia_Registry;Integrated Security=True;Pooling=False;Encrypt=False;"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:42289",
+      "sslPort": 0
+    }
+
+  }
+}

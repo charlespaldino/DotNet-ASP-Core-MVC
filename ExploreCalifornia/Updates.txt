@@ -1,0 +1,28 @@
+=General
+Added HTTP Redirect to HTTPS.
+Added use of status code pages.
+
+=HTML to MVC Port.
+-Site
+	Partial View for Main Menu Bar.
+	Partial View for Site Footer.
+-Home
+	Added data driven view compoonent for Trivia - picks out a random fact.
+	Added data driven view compoonent for Specials.
+	Added About page, detailing project changes and skills used.
+	Added Mission view to home controller.
+	Added Resources view to home controller.
+-Support
+	Added Support controller.
+	Added Support Index view and post action to handle the form.
+	Added utility for State selection.
+	Redid Contact Us form, now bound to model.
+-Tours
+	Added models for Tour data.
+	Added Tour controller, handles the Tour as well as its details.
+	Added data driven HTML generation, 3 levels deep. (Fully recursive didn't seem needed)
+-Explorer
+	Added Explorer controller.
+
+==Accounts
+Added User Name for display.

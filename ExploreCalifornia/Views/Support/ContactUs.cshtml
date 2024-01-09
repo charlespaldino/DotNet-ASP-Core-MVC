@@ -1,0 +1,98 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ExploreCalifornia.Code
+@using ExploreCalifornia.Models.Support
+@using ExploreCalifornia.Models.Tours
+@model SupportForm
+
+
+@section header 
+{
+    <h1>Contact Us</h1>
+   
+} 
+    <article id="mainArticle">        
+        <h1>Get in touch</h1>
+        <img src="/images/emerald_bay.jpg" alt="Beautiful Lake Tahoe" class="articleImage" />
+        <div class="multiCol">
+            <p>If you're on this page, we're guessing you've got something to say! Drop us a line, and be sure to sign up for our newsletter. If you're looking for our seasonal tours,  let us know when you're thinking of taking a trip. Not only will we get back to you with our website exclusive tours (we don't publish these for everyone!), but we'll be sure to throw in some cool discounts and tour extras as well. </p>
+            <h2>Support options</h2>
+            <p>If you're currently on a tour and need support, please visit our <a href="@Url.Action("Index","Support")">support</a> page. If none of these options are right for you and you still need to get in touch with us, feel free to call us at<span class="phone"> <strong>555.555.5555</strong>. Please note that this is not the support line, for support you could call </span><strong>555.555.5555</strong>. Thanks for getting in touch!</p>
+        </div>
+        <form id="frmContact" name="frmContact" method="post" action="contactus">
+            <fieldset id="personalInfo">
+                <strong>Personal Information</strong>
+                <div asp-validation-summary="All" class="input-validation-error"></div>
+                <p>
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter your name." required />
+                </p>
+                <p>
+                    <label asp-for="EmailAddress"></label>
+                    <input type="email" asp-for="EmailAddress" class="form-control" placeholder="Enter your email." required />
+                    <span asp-validation-for="EmailAddress"></span>
+                </p>
+                <p>
+                    <label asp-for="Mobile"></label>
+                    <input type="tel" asp-for="Mobile" class="form-control" placeholder="Enter your number." required />
+                    <span asp-validation-for="Mobile"></span>
+                </p>
+                <p>
+                    <label asp-for="Address"></label>
+                    <input type="tel" asp-for="Address" class="form-control" placeholder="Enter your address." />
+                    <span asp-validation-for="Address"></span>
+                </p>
+                 <p>
+                    <label asp-for="State"></label>                     
+                    <select asp-for="State" name="State" class="form-control" asp-items="@(new SelectList(LocationUtils.States, "Value","Text"))">
+                     <option value="0">Please select</option>
+                    </select>
+                 </p>
+                <p>
+                    <label asp-for="ZipCode"></label>
+                    <input type="tel" asp-for="ZipCode" class="form-control" placeholder="Enter your zipcode." />
+                    <span asp-validation-for="ZipCode"></span>
+                </p>
+            </fieldset>
+            <fieldset id="generalInfo">
+                <strong>General Information</strong>
+                <p>I would like more information about the following tours:</p>
+                <div class="card-columns">
+                    <div class="card">
+                        <div class="card-body">
+                                @Html.EditorFor(m => Model.RequestedTourInfo)                           
+                        </div>
+                    </div>
+                </div>
+                <p class="clearBoth"> </p>
+                <p class="clearBoth">
+                    <label asp-for="TripDate"></label>
+                    <input type="date" asp-for="TripDate" class="form-control"/>
+                    <span asp-validation-for="TripDate"></span>
+                </p>
+                <p class="clearBoth">
+                    <label asp-for="Comments"></label>
+                    <textarea asp-for="Comments" class="form-control" placeholder=""> </textarea>
+                    <span asp-validation-for="Comments"></span>
+                </p>
+                <p>Would you like to receive our monthly tour specials newsletter? Yes, we lie and share your information just like anyone else. Read our <a href="privacy.htm">privacy policy</a>.</p>               
+                <center>
+                    <p>
+                        @Html.RadioButton("NewsLetterStatus", "Please send me the newsletter!", false)<span>Please send me the newsletter!</span>
+                        @Html.RadioButton("NewsLetterStatus", "No thanks!", true)<span>No thanks!</span>
+                    </p>
+                    <input type="submit" name="submit" id="submit" value="Send">
+                </center>
+            </fieldset>
+        </form>
+    </article>
+
+<body>
+    @if (ViewBag.EmailSent != null)
+    {
+        <script>
+            $(document).ready(function () {
+                alert("Your email was sent! We'll be in touch.");
+            });
+        </script>
+    }    
+</body>

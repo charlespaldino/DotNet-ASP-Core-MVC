@@ -1,0 +1,45 @@
+﻿<footer id="pageFooter">
+    <section id="quickLinks">
+        <h1>Quick Nav</h1>
+        <ul id="quickNav">
+            <li><a href="/" title="Our home page">Home</a></li>
+            <li><a href="@Url.Action("Index","Tour")" title="Explore our tours">Tours</a></li>
+            <li><a href="@Url.Action("Mission","Home")" title="What we think">Mission</a></li>
+            <li><a href="@Url.Action("Resources","Home")" title="Guidance and planning">Resources</a></li>
+            <li><a href="@Url.Action("Index","Explorer")" title="Join our community">Explorers</a></li>
+            <li><a href="@Url.Action("ContactUs","Support")" title="Contact and support">Contact Us</a></li>
+        </ul>
+    </section>
+    <section id="footerResources">
+        <h1>Resources</h1>
+        <ul id="quickNav">
+            <li><a href="resources/faq.htm" title="Our home page">FAQ</a></li>
+            <li><a href="support.htm" title="Need help?">Support</a></li>
+            <li><a href="resources/legal.htm" title="The fine print">Legal</a></li>
+            <li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form id="logout" action="@Url.Action("Logout", "Account")" method="post">                       
+                        <a href="javascript: $('#logout').submit()" class="last">Logout</a>
+                    </form>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")" title="Log In" class="last">Login</a>
+                }
+            </li>
+        </ul>
+    </section>
+    <section id="companyInfo">
+        <h1>Contact</h1>
+        <h2>Explore California</h2>
+        <p>
+            12345 Not A Street<br />
+            Ventura, CA 93003
+        </p>
+        <p>555.555.5555 <em>(24 hour support)</em></p>
+    </section>
+    <p>
+        &copy; - Charles Paldino @DateTime.Now.Year
+    </p>
+</footer>

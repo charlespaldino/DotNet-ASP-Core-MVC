@@ -1,0 +1,28 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model ExploreCalifornia.Models.Account.LoginViewModel
+
+<fieldset class="account">
+    <h1>Login</h1>
+    <form role="form" method="post" action="login">
+        <fieldset>
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input type="text" asp-for="UserName" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control" required />
+            </div>
+            <br />
+            <center>              
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </center>
+            <div asp-validation-summary="All" class="input-validation-error"></div>
+            <br />
+            <div>
+                <span>Don't have an account?</span>
+                <a href="@Url.Action("Register", "Account")" title="Log In" class="last">Register</a>
+            </div>
+        </fieldset>
+    </form>
+</fieldset>

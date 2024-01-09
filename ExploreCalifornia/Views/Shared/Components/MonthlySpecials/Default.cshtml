@@ -1,0 +1,16 @@
+﻿@using ExploreCalifornia.Models
+@model IEnumerable<MonthlySpecial>
+
+<h1><strong>MonthlySpecials</strong></h1>
+
+@foreach(MonthlySpecial special in Model)
+{
+    <h2 class="top">
+        <img src="@special.ImageURL" alt="@special.Type" width="75" height="75" />
+        @special.Description
+    </h2>
+    <p>
+        @special.Name <br />
+        <a href="@special.URL">@special.Price</a>
+    </p>
+}

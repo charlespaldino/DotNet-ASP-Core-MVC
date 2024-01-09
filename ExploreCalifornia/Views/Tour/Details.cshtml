@@ -1,0 +1,39 @@
+@using ExploreCalifornia.Models.Tours
+@inject ExploreCalifornia.Services.FormattingService formatter;
+@model SupportForm
+
+@section header 
+{
+    <h1>Tours</h1>
+}
+<article id="mainArticle">
+    <h1>@Model.Name</h1>
+    <img src="@Model.SplashPosterURL" alt="@Model.Name" class="articleImage" />
+
+    <div id="div_splash">
+        @Html.Raw(@formatter.formatHTML(@Model.SplashHTML))
+    </div>
+
+    <div id="tourDescriptions">
+        @foreach(TourDetail details in Model.TourDetails)
+        {
+            <div class="tourDescription">
+                <h2>@details.Name</h2>
+                <h3 class="price">@details.DurationDays days  $@details.Price</h3>
+                <p>
+                    <img src="@details.ImageURL" alt="@details.Name" width="115" height="130" />
+                    @details.Description<br />
+                    <span class="option">@details.Options | Rating: @details.Rating</span>                    
+                </p>
+                <p>
+                    @if(details.TourInfo != null)
+                    {
+                        <a href="@Url.Action("Info","Tour", new {ID = Model.ID, details_ID = details.ID})" title="@details.Name" class="more">learn more!</a>
+                    }
+                    <a href="/booking.htm" title="Book Now!" class="book">book now!</a>
+                </p>
+            </div>
+        }
+    </div>
+</article>
+

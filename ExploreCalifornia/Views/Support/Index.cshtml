@@ -1,0 +1,71 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ExploreCalifornia.Models.Support
+@model SupportForm
+
+@section header 
+{
+    <h1>Support Options</h1>
+}
+
+<article id="mainArticle">
+    <h1>Need some help?</h1>
+    <img src="/images/cyclist.jpg" alt="Biking along with Cycle California" class="articleImage" />
+    <p>If you have booked one of our tours, or if you are currently on a tour and need our assistance, we've got a couple of options for you. </p>
+    <section id="support_options">
+        <h2>If you need immediate assistance, we have the following options:</h2>
+        <p>Our 24-hour help line: <strong>555.555.5555</strong></p>
+        <p>Our 24-hour chat support: <a href="contact/chat.htm">Chat with an agent</a></p>
+        <h2> Don't need us right away?</h2>
+        <p>If your request isn't urgent, drop us a quick line and we'll get back to you within 24 hours</p>
+    </section>
+    <form method="post" action="quicksupport">
+        <fieldset id="quick_support">
+            <strong>Quick Support</strong>
+            <div asp-validation-summary="All" class="input-validation-error"></div>
+            <p>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your name." required/>
+            </p>
+            <p>
+                <label asp-for="EmailAddress"></label>
+                <input type="email" asp-for="EmailAddress" class="form-control" placeholder="Enter your email." required />
+                <span asp-validation-for="EmailAddress"></span>
+            </p>
+            <p>
+                <label asp-for="Mobile"></label>
+                <input type="tel" asp-for="Mobile" class="form-control" placeholder="Enter your number." required />
+                <span asp-validation-for="Mobile"></span>
+            </p>
+            <p>
+                <label asp-for="SelectedTour"></label>
+                <select asp-for="SelectedTour" name="SelectedTour" class="form-control" asp-items="@(new SelectList(ViewBag.Tours, "ID", "Name"))">
+                    <option value="0">Please select</option>
+                </select>
+            </p>
+            <p>
+                <label asp-for="TourStatus"></label>
+                @Html.RadioButton("TourStatus", "I have booked a tour", false)<span>I have booked a tour</span>
+                @Html.RadioButton("TourStatus", "I am on a tour", false)<span>I am on a tour</span>
+            </p>
+            <p>
+                <label asp-for="Comments"></label>
+                <textarea asp-for="Comments" class="form-control" placeholder=""> </textarea>
+                <span asp-validation-for="Comments"></span>
+            </p>
+            <center>                
+                <button type="submit">Submit</button>
+            </center>
+        </fieldset>
+    </form>
+</article>
+
+<body>
+    @if (ViewBag.EmailSent != null)
+    {
+        <script>
+            $(document).ready(function () {
+                alert("Your email was sent! We'll be in touch.");
+            });
+        </script>
+    }
+</body>
